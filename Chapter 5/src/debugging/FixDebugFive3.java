@@ -8,6 +8,7 @@ package debugging;
 import java.util.Scanner;
 public class FixDebugFive3
 {
+	static Scanner input = new Scanner(System.in);
    public static void main (String args[])
    {
       int item;
@@ -15,12 +16,7 @@ public class FixDebugFive3
       final int LOW = 111;
       final int HIGH = 999;
       final int CUTOFF = 500;
-      Scanner input = new Scanner(System.in);
-      calculateOutPut();
-   }
-   public static void calculateOutPut()
-   {
-           
+   
       System.out.println("Please enter item number");
       item = input.nextInt();
       if(item < LOW) output = "Item number too low";

@@ -1,9 +1,10 @@
+package debugging;
 // FixDebugFive4.java
 // Outputs highest of four numbers
-import javax.swing.*;
+import javax.swing.JOptionPane;
 public class FixDebugFive4
 {
-   public static void main (String args[]) 
+   public static void main(String args[]) 
    {
       int one, two, three, four;
       String str, output;
@@ -15,10 +16,10 @@ public class FixDebugFive4
       three = Integer.parseInt(str);
       str = JOptionPane.showInputDialog(null,"Enter an integer");
       four = Integer.parseInt(str);
-      if(one > two & one > three & one > four);
+      if(one > two & one > three & one > four)
          output = "Highest is " + one;
       else
-         if(two > one & two > three && two > four);
+         if(two > one & two > three && two > four)
             output = "Highest is " + two;
          else
            if(three > one & three > two & three > four)
