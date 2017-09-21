@@ -5,6 +5,7 @@ public class StudentSwitchProgram {
 	public static void main(String[] args) {
 		int user;
 		
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 
 		System.out.print("Please enter your student number >> ");
