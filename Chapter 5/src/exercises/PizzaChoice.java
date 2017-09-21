@@ -46,6 +46,10 @@ public class PizzaChoice {
 
 				 }
 		}
+		else
+		{
+			System.out.println("Sorry, that is not a valid answer. Please try again.");
+		}
 		if("No".equalsIgnoreCase(choiceYes) || "N".equalsIgnoreCase(choiceYes))
 		{
 			System.out.println("You do not want a pizza. Would you like a hot dog instead?");
@@ -73,6 +77,11 @@ public class PizzaChoice {
 		  {
 			  System.out.println("You said you want a " + pizzaKind + " type of pizza.");
 		  }
+		  else
+		  {
+			  System.out.println("Sorry, that is not a valid answer. Please try again.");
+			  displayPizzaKind();
+		  }
 	}
 	public static void displayPizzaToppings()
 	{
@@ -86,6 +95,11 @@ public class PizzaChoice {
 		if("No".equalsIgnoreCase(toppingsChoice))
 		{
 			System.out.println("You said you do not want extra toppings.");
+		}
+		else
+		{
+			System.out.println("Sorry, that is not a valid answer. Please try again.");
+			displayPizzaToppings();
 		}
 	}
 
