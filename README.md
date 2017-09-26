@@ -3,4 +3,4 @@
 <img src="FlowchartSample.PNG" height="250" width ="250" alt="flow chart for age program">
 
 <h2> Delgados Choice, flowchart </h2>
-<img src="Untitled Diagram.png" height="300" width ="300" alt="flow chart for delgados choice">
+<img src="Untitled Diagram.png" height="250" width ="250" alt="flow chart for delgados choice">
