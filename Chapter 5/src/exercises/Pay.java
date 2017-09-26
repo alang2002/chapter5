@@ -1,5 +1,6 @@
 package exercises;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Pay {
@@ -23,9 +24,16 @@ public class Pay {
 		String insurance = null;
 		boolean retirementYes = false;
 		Scanner input = new Scanner(System.in);
+		DecimalFormat df = new DecimalFormat("$###.##");
 		
 		System.out.println("Enter skill level >> ");
 		skillLevel = input.nextInt();
+		if(skillLevel >= 4 || skillLevel < 0)
+		{
+			System.out.println("That is not a valid skill level, please try again.");
+			System.out.println("Enter skill level >> ");
+			skillLevel = input.nextInt();
+		}
 		System.out.println("Enter hours worked this week >> ");
 		hoursPerWeek = input.nextDouble();
 		
@@ -41,12 +49,7 @@ public class Pay {
 		{
 			pay = SKILL_LEVEL_3_PAY;
 		}
-		if(skillLevel >= 4)
-		{
-			System.out.println("That is not a valid skill level, please try again.");
-			System.out.println("Enter skill level >> ");
-			skillLevel = input.nextInt();
-		}
+		
 		
 		
 		if(skillLevel == 2 || skillLevel == 3)
@@ -218,11 +221,11 @@ public class Pay {
 				System.out.println("Enter Yes if you want to participate in the retirement plan (3% of gross pay) >> ");
 				insurance = input.next();
 				retirementYes = true;
-				pay = pay * 0.03;
+				pay = pay - (pay * 0.03);
 			}
 		
 		
-				
+		netIncome = pay * hoursPerWeek;
 		System.out.println("You have worked " + hoursPerWeek + " hours this week.");
 		System.out.println("You have an hourly pay rate of " + pay + ".");
 		System.out.println("The regular pay for 40 hours is " + pay * 40 + ".");
@@ -230,10 +233,10 @@ public class Pay {
 		{
 			overtimePay = pay * 1.5;
 			System.out.println("You are being paid " + overtimePay + " for overtime.");
+			netIncome = overtimePay + pay;
 		}
-		netIncome = overtimePay + pay;
-		System.out.println("Your total pay for overtime hours (if applicable) and regular hours is: " + netIncome);
-		System.out.println("Your total pay may be affected by your retirement plan if you chose one.");
+		System.out.println("Your total pay for overtime hours (if applicable) and regular hours is: " + df.format(netIncome));
+		System.out.println("Your total pay may be affected by your retirement and insurance plan if you chose one.");
 		if(yesMedical == true)
 		{
 			netIncome = netIncome - 32.50;
@@ -270,7 +273,7 @@ public class Pay {
 			netIncome = netIncome - 32.50;
 			}
 		}
-		System.out.println("Your total for the week is " + netIncome);
+		System.out.println("Your total for the week is " + df.format(netIncome));
 		if(netIncome <= 0)
 		{
 			System.out.println("ERROR, INSUFFICENT FUNDS");
