@@ -17,9 +17,10 @@ public class Pay {
 		boolean yesDisability = false;
 		int holder;
 		double hoursPerWeek;
-		double pay = 17.00;
+		double pay = 0;
 		double overtimePay = 0;
 		double netIncome;
+		double deductions = 0;
 		int skillLevel;
 		String insurance = null;
 		boolean retirementYes = false;
@@ -70,15 +71,22 @@ public class Pay {
 						+ "\n the remaining options are Dental (20.00 per week) and Disability (10.00 per week)."
 						+ "\n(Yes/No)");
 				selection = input.next();
+				if("No".equalsIgnoreCase(selection))
+				{
+					yesDental = false;
+					yesDisability = false;
+				}
 				if("Yes".equalsIgnoreCase(selection))
 				{
 					System.out.println("Select your plan: "
 							+ "\n1 for Disability"
 							+ "\n2 for Dental");
+					holder = input.nextInt();
 					if(holder == 2)
 					{
 						yesDental = true;
 						System.out.println("Would you like the disability package as well? (Yes/No) ");
+						input.nextLine();
 						selection = input.next();
 						if("Yes".equalsIgnoreCase(selection))
 						{
@@ -105,11 +113,6 @@ public class Pay {
 						
 					}
 					
-				}
-				if("No".equalsIgnoreCase(selection))
-				{
-					yesDental = false;
-					yesDisability = false;
 				}
 			}
 			
@@ -203,14 +206,8 @@ public class Pay {
 					yesDisability = false;
 				}
 			}
-			
-			
-			
 			if(holder == 4)
-				yesDisability = false;
-				yesMedical = false;
-				yesDental = false;
-				
+				System.out.println("No insurance plan selected");
 		}
 			
 			
@@ -223,9 +220,21 @@ public class Pay {
 				retirementYes = true;
 				pay = pay - (pay * 0.03);
 			}
-		
-		
+			
 		netIncome = pay * hoursPerWeek;
+		if(yesMedical)
+		{
+			deductions += medical;
+		}
+		if(yesDental)
+		{
+			deductions += dental;
+		}
+		if(yesDisability)
+		{
+			deductions += disability;
+		}
+		
 		System.out.println("You have worked " + hoursPerWeek + " hours this week.");
 		System.out.println("You have an hourly pay rate of " + pay + ".");
 		System.out.println("The regular pay for 40 hours is " + pay * 40 + ".");
@@ -237,44 +246,10 @@ public class Pay {
 		}
 		System.out.println("Your total pay for overtime hours (if applicable) and regular hours is: " + df.format(netIncome));
 		System.out.println("Your total pay may be affected by your retirement and insurance plan if you chose one.");
-		if(yesMedical == true)
-		{
-			netIncome = netIncome - 32.50;
-			if(yesDental == true)
-			{
-				netIncome = netIncome - 20.00;
-			}
-			if(yesDisability == true)
-			{
-				netIncome = netIncome - 10.00;
-			}
-		}
-		if(yesDental == true)
-		{
-			netIncome = netIncome - 20.00;
-			if(yesMedical == true)
-			{
-			netIncome = netIncome - 32.50;
-			}
-			if(yesDisability == true)
-			{
-			netIncome = netIncome - 10.00;
-			}
-		}
-		if(yesDisability == true)
-		{
-		netIncome = netIncome - 10.00;
-			if(yesDental == true)
-			{
-				netIncome = netIncome - 20.00;
-			}
-			if(yesMedical == true)
-			{
-			netIncome = netIncome - 32.50;
-			}
-		}
+		System.out.println("The total deductions for the week is " + df.format(deductions) + ".");
+		netIncome = netIncome - deductions;
 		System.out.println("Your total for the week is " + df.format(netIncome));
-		if(netIncome <= 0)
+		if(netIncome < 0)
 		{
 			System.out.println("ERROR, INSUFFICENT FUNDS");
 		}
