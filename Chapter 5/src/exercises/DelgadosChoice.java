@@ -183,15 +183,6 @@ public class DelgadosChoice {
 				+ mexicanCandyPriceTotal + popPriceTotal + nachosPriceTotal + burritoPriceTotal 
 				+ extraToppingsPriceTotal + chimichangaPriceTotal;
 		
-		System.out.println("In total, you have ordered: " + amountTacosOrdered 
-				+ " tacos, " + amountEnchiladasOrdered + " enchiladas, " 
-				+ amountWatersOrdered + " waters, " + amountChurrosOrdered 
-				+ " churros, " + amountMexicanCandyOrdered + " mexican candy, "
-				+ amountPopsOrdered + " pops, " + amountNachosOrdered 
-				+ " nachos, " + amountBurritosOrdered + " burritos, " 
-				+ amountExtraToppingsOrdered + " extra toppings, and "
-				+ amountChimichangasOrdered + " chimichangas.");
-		
 		System.out.println("In total, you have ordered:");
 		System.out.println(amountTacosOrdered + " tacos,");
 		System.out.println(amountEnchiladasOrdered + " enchiladas,");
